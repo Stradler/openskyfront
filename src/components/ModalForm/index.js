@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Row, Table, TableHead, TableBody } from "mdbreact";
 import * as apiCall from "../../api";
 import "./ModalForm.css";
@@ -41,44 +41,47 @@ class ModalForm extends Component {
   };
   renderRow = verb => {
     let data = verb === "Departed" ? this.state.departure : this.state.arrival;
-    return [
-      <Row key={verb + 1}>
-        <span className="ModalForm__name">{verb} in last: </span>
-        <select onChange={this.updateData}>
-          <option defaultValue={60}>60</option>
-          <option value={10}>10</option>
-          <option value={30}>30</option>
-          <option value={90}>90</option>
-        </select>
-        <span className="ModalForm__name">minutes </span>
-      </Row>,
-      <Row key={verb + 2}>
-        <Table striped className="ModalForm__table" small>
-          <TableHead>
-            <tr>
-              <th>ICAO</th>
-              <th>First Seen</th>
-              <th>Last Seen</th>
-            </tr>
-          </TableHead>
-          <TableBody>
-            {data.length > 0 ? (
-              data.map(aircraft => (
-                <tr key={aircraft.icao24 + aircraft.firstSeen}>
-                  <th>{aircraft.icao24}</th>
-                  <th>{new Date(aircraft.firstSeen * 1000).toString()}</th>
-                  <th>{new Date(aircraft.lastSeen * 1000).toString()}</th>
-                </tr>
-              ))
-            ) : (
+    return (
+      <Fragment>
+        <Row key={verb + 1}>
+          <span className="ModalForm__name">{verb} in last: </span>
+          <select onChange={this.updateData}>
+            <option defaultValue={60}>60</option>
+            <option value={10}>10</option>
+            <option value={30}>30</option>
+            <option value={90}>90</option>
+          </select>
+          <span className="ModalForm__name">minutes </span>
+        </Row>
+        ,
+        <Row key={verb + 2}>
+          <Table striped className="ModalForm__table" small>
+            <TableHead>
               <tr>
-                <th colSpan="3">No current flight in that time range</th>
+                <th>ICAO</th>
+                <th>First Seen</th>
+                <th>Last Seen</th>
               </tr>
-            )}
-          </TableBody>
-        </Table>
-      </Row>
-    ];
+            </TableHead>
+            <TableBody>
+              {data.length > 0 ? (
+                data.map(aircraft => (
+                  <tr key={aircraft.icao24 + aircraft.firstSeen}>
+                    <th>{aircraft.icao24}</th>
+                    <th>{new Date(aircraft.firstSeen * 1000).toString()}</th>
+                    <th>{new Date(aircraft.lastSeen * 1000).toString()}</th>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <th colSpan="3">No current flight in that time range</th>
+                </tr>
+              )}
+            </TableBody>
+          </Table>
+        </Row>
+      </Fragment>
+    );
   };
   render() {
     return (

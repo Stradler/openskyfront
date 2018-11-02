@@ -15,7 +15,7 @@ import {
   ModalFooter,
   Button
 } from "mdbreact";
-import ModalForm from "../ModalForm";
+import ModalForm from "../modalForm";
 import "./Dashboard.css";
 const airports = {
   "Dallas-Fort Worth": "KDFW",
