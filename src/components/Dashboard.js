@@ -88,7 +88,7 @@ class Dashboard extends Component {
           toggle={this.toggle.bind(this, "")}
         >
           <ModalHeader toggle={this.toggle.bind(this, "")}>
-            Current Flights for {airports[this.state.airport]}
+            Current Flights for {this.state.airport}
           </ModalHeader>
           <ModalBody>
             <ModalForm airportCode={airports[this.state.airport]} />
