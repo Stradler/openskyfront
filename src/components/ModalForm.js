@@ -39,10 +39,10 @@ class ModalForm extends Component {
       )
       .catch(e => console.log("can't get data"));
   };
-  renderRow() {
+  renderRow(verb) {
     return (
       <Row>
-        <span className="ModalForm__name">Departed in last: </span>
+        <span className="ModalForm__name">{verb} in last: </span>
         <select onChange={this.updateData}>
           <option defaultValue={60}>60</option>
           <option value={10}>10</option>
@@ -56,7 +56,7 @@ class ModalForm extends Component {
   render() {
     return (
       <form className="ModalForm__form" onSubmit={e => e.preventDefault()}>
-        {this.renderRow()}
+        {this.renderRow("Departed")}
         <Row>
           <Table striped className="ModalForm__table" small>
             <TableHead>
@@ -79,7 +79,7 @@ class ModalForm extends Component {
             </TableBody>
           </Table>
         </Row>
-        {this.renderRow()}
+        {this.renderRow("Arrived")}
         <Row>
           <Table striped className="ModalForm__table" small>
             <TableHead>
