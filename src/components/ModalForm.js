@@ -67,15 +67,19 @@ class ModalForm extends Component {
               </tr>
             </TableHead>
             <TableBody>
-              {this.state.departure.length > 0
-                ? this.state.departure.map(aircraft => (
-                    <tr>
-                      <th>{aircraft.icao24}</th>
-                      <th>{new Date(aircraft.firstSeen * 1000).toString()}</th>
-                      <th>{new Date(aircraft.lastSeen * 1000).toString()}</th>
-                    </tr>
-                  ))
-                : "No current flight in that time range"}
+              {this.state.departure.length > 0 ? (
+                this.state.departure.map(aircraft => (
+                  <tr key={aircraft.icao24 + aircraft.firstSeen}>
+                    <th>{aircraft.icao24}</th>
+                    <th>{new Date(aircraft.firstSeen * 1000).toString()}</th>
+                    <th>{new Date(aircraft.lastSeen * 1000).toString()}</th>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <th colSpan="3">No current flight in that time range</th>
+                </tr>
+              )}
             </TableBody>
           </Table>
         </Row>
@@ -90,15 +94,19 @@ class ModalForm extends Component {
               </tr>
             </TableHead>
             <TableBody>
-              {this.state.arrival.length > 0
-                ? this.state.arrival.map(aircraft => (
-                    <tr>
-                      <th>{aircraft.icao24}</th>
-                      <th>{new Date(aircraft.firstSeen * 1000).toString()}</th>
-                      <th>{new Date(aircraft.lastSeen * 1000).toString()}</th>
-                    </tr>
-                  ))
-                : "No current flight in that time range"}
+              {this.state.arrival.length > 0 ? (
+                this.state.arrival.map(aircraft => (
+                  <tr key={aircraft.icao24 + aircraft.firstSeen}>
+                    <th>{aircraft.icao24}</th>
+                    <th>{new Date(aircraft.firstSeen * 1000).toString()}</th>
+                    <th>{new Date(aircraft.lastSeen * 1000).toString()}</th>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <th colSpan="3">No current flight in that time range</th>
+                </tr>
+              )}
             </TableBody>
           </Table>
         </Row>
