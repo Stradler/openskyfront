@@ -22,12 +22,12 @@ class ModalForm extends Component {
       apiCall.getArrivalFlight(
         this.props.airportCode,
         currentEpoch,
-        currentEpoch + end
+        currentEpoch - end
       ),
       apiCall.getDepartureFlight(
         this.props.airportCode,
         currentEpoch,
-        currentEpoch + end
+        currentEpoch - end
       )
     ])
       .then(values =>
