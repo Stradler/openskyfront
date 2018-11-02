@@ -15,8 +15,8 @@ import {
   ModalFooter,
   Button
 } from "mdbreact";
-import ModalForm from "./ModalForm";
-import "../styles/ModalForm.css";
+import ModalForm from "../ModalForm";
+import "./Dashboard.css";
 const airports = {
   "Dallas-Fort Worth": "KDFW",
   "Frankfurt Airport": "EDDF",
@@ -83,7 +83,7 @@ class Dashboard extends Component {
           {grid}
         </CardGroup>
         <Modal
-          className="ModalForm"
+          className="Modal"
           isOpen={this.state.modal}
           toggle={this.toggle.bind(this, "")}
         >

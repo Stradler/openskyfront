@@ -1,22 +1,14 @@
 import axios from "axios";
 import * as API_ENDPOINTS from "./constants";
 
-export function getArrivalFlight(airportCode, endEpoch, beginEpoch) {
+export function getArrivalFlight(params) {
   return axios.get(API_ENDPOINTS.API_ARRIVAL, {
-    params: {
-      airport: airportCode,
-      begin: beginEpoch,
-      end: endEpoch
-    }
+    params
   });
 }
 
-export function getDepartureFlight(airportCode, endEpoch, beginEpoch) {
+export function getDepartureFlight(params) {
   return axios.get(API_ENDPOINTS.API_DEPARTURE, {
-    params: {
-      airport: airportCode,
-      begin: beginEpoch,
-      end: endEpoch
-    }
+    params
   });
 }

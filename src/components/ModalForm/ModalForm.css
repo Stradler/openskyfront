@@ -1,10 +1,4 @@
 .ModalForm {
-  min-width: 80vw;
-  display: flex;
-  justify-content: center;
-}
-
-.ModalForm__form {
   display: flex;
   flex-direction: column;
   align-items: center;
