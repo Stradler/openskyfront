@@ -3,3 +3,14 @@
   display: flex;
   justify-content: center;
 }
+
+.ModalForm__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ModalForm__name {
+  margin-left: 10px;
+  margin-right: 10px;
+}
