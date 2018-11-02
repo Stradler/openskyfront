@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Table, TableHead, TableBody } from "mdbreact";
 import * as apiCall from "../api";
+import "../styles/ModalForm.css";
 
 class ModalForm extends Component {
   state = {
@@ -40,19 +41,19 @@ class ModalForm extends Component {
   }
   render() {
     return (
-      <form onSubmit={e => e.preventDefault()}>
+      <form className="ModalForm__form" onSubmit={e => e.preventDefault()}>
         <Row>
-          Departed in:
+          <span className="ModalForm__name">Departed in last: </span>
           <select onChange={this.updateData.bind(this)}>
             <option defaultValue={60}>60</option>
             <option value={10}>10</option>
             <option value={30}>30</option>
             <option value={90}>90</option>
           </select>
-          minutes
+          <span className="ModalForm__name">minutes </span>
         </Row>
         <Row>
-          <Table small>
+          <Table className="ModalForm__table" small>
             <TableHead>
               <tr>
                 <th>ICAO</th>
@@ -74,17 +75,17 @@ class ModalForm extends Component {
           </Table>
         </Row>
         <Row>
-          Arrived in:
+          <span className="ModalForm__name">Arrived in last:</span>
           <select onChange={this.updateData.bind(this)}>
             <option defaultValue={60}>60</option>
             <option value={30}>30</option>
             <option value={10}>10</option>
             <option value={90}>90</option>
           </select>
-          minutes
+          <span className="ModalForm__name">minutes</span>
         </Row>
         <Row>
-          <Table small>
+          <Table className="ModalForm__table" small>
             <TableHead>
               <tr>
                 <th>ICAO</th>
@@ -101,7 +102,7 @@ class ModalForm extends Component {
                       <th>{new Date(aircraft.lastSeen).toString()}</th>
                     </tr>
                   ))
-                : "No current flight in that time range "}
+                : "No current flight in that time range"}
             </TableBody>
           </Table>
         </Row>
