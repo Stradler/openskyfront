@@ -7,20 +7,22 @@ class Login extends Component {
     username: "",
     password: ""
   };
-  login(history, e) {
+  login = e => {
     e.preventDefault();
-    if (this.state.username === "demo" && this.state.password === "demo") {
-      localStorage.setItem("username", this.state.username);
-      localStorage.setItem("password", this.state.password);
+    const { history } = this.props;
+    const { username, password } = this.state;
+    if (username === "demo" && password === "demo") {
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
       history.push("/dashboard");
     } else {
       alert("Wrong login/password!");
       localStorage.clear();
     }
-  }
+  };
   updateForm(field, event) {
     event.persist();
-    this.setState((state, props) => ({
+    this.setState(state => ({
       [field]: event.target.value
     }));
   }
@@ -28,7 +30,7 @@ class Login extends Component {
     return (
       <Row>
         <Col md="6">
-          <form onSubmit={this.login.bind(this, this.props.history)}>
+          <form onSubmit={this.login}>
             <Input
               label="Your name"
               icon="user"
