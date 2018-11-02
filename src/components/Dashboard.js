@@ -13,11 +13,10 @@ import {
   ModalBody,
   ModalHeader,
   ModalFooter,
-  Button,
-  Table
+  Button
 } from "mdbreact";
-import axios from "axios";
-const API_ENDPOINT = "https://opensky-network.org/api";
+import ModalForm from "./ModalForm";
+import "../styles/ModalForm.css";
 const airports = {
   Atlanta: "KATL",
   Beijing: "ZBAA",
@@ -30,66 +29,6 @@ const airports = {
   "Shanghai Pudong": "ZSPD",
   Paris: "LFPG"
 };
-
-class ModalForm extends Component {
-  state = {
-    departure: {},
-    arrival: {}
-  };
-  componentDidMount() {
-    let state = {};
-    let currentEpoch = Math.round(new Date(2018, 10, 1).getTime() / 1000);
-    axios
-      .get(API_ENDPOINT + "/flights/arrival", {
-        params: {
-          airport: this.props.airportCode,
-          begin: currentEpoch - 600,
-          end: currentEpoch
-        }
-      })
-      .then(response => (state.departure = response.data));
-    axios
-      .get(API_ENDPOINT + "/flights/departure", {
-        params: {
-          airport: this.props.airportCode,
-          begin: currentEpoch - 600,
-          end: currentEpoch
-        }
-      })
-      .then(response => (state.arrival = response.data));
-
-    console.log(state);
-  }
-  render() {
-    return (
-      <form onSubmit={e => e.preventDefault()}>
-        <Row>
-          Departed in:
-          <select>
-            <option value={10}>10</option>
-            <option value={30}>30</option>
-            <option value={60}>60</option>
-            <option value={90}>90</option>
-          </select>
-          minutes
-          <Table />
-        </Row>
-
-        <Row>
-          Arrived in:
-          <select>
-            <option value={10}>10</option>
-            <option value={30}>30</option>
-            <option value={60}>60</option>
-            <option value={90}>90</option>
-          </select>
-          minutes
-          <Table />
-        </Row>
-      </form>
-    );
-  }
-}
 
 class Dashboard extends Component {
   state = {
@@ -121,7 +60,6 @@ class Dashboard extends Component {
               width="100%"
               src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
               alt={"Image of " + name + "Airport"}
-              top
               hover
               overlay="white-slight"
             />
@@ -144,9 +82,13 @@ class Dashboard extends Component {
         >
           {grid}
         </CardGroup>
-        <Modal isOpen={this.state.modal} toggle={this.toggle.bind(this, "")}>
+        <Modal
+          className="ModalForm"
+          isOpen={this.state.modal}
+          toggle={this.toggle.bind(this, "")}
+        >
           <ModalHeader toggle={this.toggle.bind(this, "")}>
-            Modal title
+            Current Flights for {airports[this.state.airport]}
           </ModalHeader>
           <ModalBody>
             <ModalForm airportCode={airports[this.state.airport]} />

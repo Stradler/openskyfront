@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { Button, Input, Row, Col } from "mdbreact";
+import { Input, Row, Col } from "mdbreact";
 
 class Login extends Component {
   state = {
