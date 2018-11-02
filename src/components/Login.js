@@ -21,7 +21,6 @@ class Login extends Component {
   updateForm(field, event) {
     event.persist();
     this.setState((state, props) => ({
-      ...state,
       [field]: event.target.value
     }));
   }

@@ -18,7 +18,7 @@ class ModalForm extends Component {
     } else {
       end = event;
     }
-    let currentEpoch = Math.round(new Date(2018, 10, 1).getTime() / 1000);
+    let currentEpoch = Math.round(Date.now() / 1000) - 24 * 3600;
     Promise.all([
       apiCall.getArrivalFlight(
         this.props.airportCode,
@@ -66,8 +66,8 @@ class ModalForm extends Component {
                 ? this.state.departure.map(aircraft => (
                     <tr>
                       <th>{aircraft.icao24}</th>
-                      <th>{new Date(aircraft.firstSeen).toString()}</th>
-                      <th>{new Date(aircraft.lastSeen).toString()}</th>
+                      <th>{new Date(aircraft.firstSeen * 1000).toString()}</th>
+                      <th>{new Date(aircraft.lastSeen * 1000).toString()}</th>
                     </tr>
                   ))
                 : "No current flight in that time range"}
@@ -98,8 +98,8 @@ class ModalForm extends Component {
                 ? this.state.arrival.map(aircraft => (
                     <tr>
                       <th>{aircraft.icao24}</th>
-                      <th>{new Date(aircraft.firstSeen).toString()}</th>
-                      <th>{new Date(aircraft.lastSeen).toString()}</th>
+                      <th>{new Date(aircraft.firstSeen * 1000).toString()}</th>
+                      <th>{new Date(aircraft.lastSeen * 1000).toString()}</th>
                     </tr>
                   ))
                 : "No current flight in that time range"}
