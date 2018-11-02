@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Row, Table, TableHead, TableBody } from "mdbreact";
 import * as apiCall from "../../api";
-import "./ModalForm.css";
+import "./modalForm.css";
 
 class ModalForm extends Component {
   state = {

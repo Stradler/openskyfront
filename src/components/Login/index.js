@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Input, Row, Col } from "mdbreact";
-import "./Login.css";
+import "./login.css";
 
 class Login extends Component {
   state = {
