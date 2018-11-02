@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Input, Row, Col } from "mdbreact";
+import "./Login.css";
 
 class Login extends Component {
   state = {
@@ -28,7 +29,7 @@ class Login extends Component {
   }
   render() {
     return (
-      <Row>
+      <Row className="Login">
         <Col md="6">
           <form onSubmit={this.login}>
             <Input
