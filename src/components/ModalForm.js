@@ -11,7 +11,7 @@ class ModalForm extends Component {
   componentDidMount() {
     this.updateData(3600);
   }
-  updateData(event) {
+  updateData = (event) => {
     let end;
     if (event.target) {
       end = event.target.value * 60;
@@ -44,7 +44,7 @@ class ModalForm extends Component {
       <form className="ModalForm__form" onSubmit={e => e.preventDefault()}>
         <Row>
           <span className="ModalForm__name">Departed in last: </span>
-          <select onChange={this.updateData.bind(this)}>
+          <select onChange={this.updateData}>
             <option defaultValue={60}>60</option>
             <option value={10}>10</option>
             <option value={30}>30</option>
@@ -76,7 +76,7 @@ class ModalForm extends Component {
         </Row>
         <Row>
           <span className="ModalForm__name">Arrived in last:</span>
-          <select onChange={this.updateData.bind(this)}>
+          <select onChange={this.updateData>
             <option defaultValue={60}>60</option>
             <option value={30}>30</option>
             <option value={10}>10</option>
