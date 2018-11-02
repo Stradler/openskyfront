@@ -53,7 +53,7 @@ class ModalForm extends Component {
           <span className="ModalForm__name">minutes </span>
         </Row>
         <Row>
-          <Table className="ModalForm__table" small>
+          <Table striped className="ModalForm__table" small>
             <TableHead>
               <tr>
                 <th>ICAO</th>
@@ -85,7 +85,7 @@ class ModalForm extends Component {
           <span className="ModalForm__name">minutes</span>
         </Row>
         <Row>
-          <Table className="ModalForm__table" small>
+          <Table striped className="ModalForm__table" small>
             <TableHead>
               <tr>
                 <th>ICAO</th>
