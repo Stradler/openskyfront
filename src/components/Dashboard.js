@@ -18,15 +18,15 @@ import {
 import ModalForm from "./ModalForm";
 import "../styles/ModalForm.css";
 const airports = {
-  Atlanta: "KATL",
-  Beijing: "ZBAA",
+  "Dallas-Fort Worth": "KDFW",
+  "Frankfurt Airport": "EDDF",
   "Dubai International": "OMDB",
-  "Tokyo Haneda": "RJTT",
+  "Indira Gandhi International Airport": "VIDP",
   "Los Angeles": "KLAX",
   "Chicago O'Hare": "KORD",
   "London Heathrow": "EGLL",
-  "Hong Kong": "VHHH",
-  "Shanghai Pudong": "ZSPD",
+  "Amsterdam Airport Schiphol": "EHAM",
+  "Madrid Barajas Airport ": "LEMD",
   Paris: "LFPG"
 };
 
